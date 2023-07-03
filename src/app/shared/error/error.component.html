@@ -1,1 +1,4 @@
-<p>error works!</p>
+<div *ngIf="mostrarError" class="alert alert-dismissible alert-danger">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>{{textoError | uppercase}}</strong>
+</div>
