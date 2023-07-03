@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class BuscarImagenComponent {
 
+  nombreImagen: string;
+
+  constructor() {
+    this.nombreImagen = '';
+  }
+
+  buscarImagenes() {
+    console.log(this.nombreImagen);
+  }
+
 }
