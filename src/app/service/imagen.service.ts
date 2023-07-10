@@ -31,7 +31,7 @@ export class ImagenService {
   getImagenes(termino: string): Observable<any> {
 
     const KEY = '37115025-765928e6b0eac7c350910363b';
-    const URL = 'https://pixabay.com/api/?key=' + KEY + '&q=' + termino;
+    const URL = 'https://pixabay.com/api/?key=' + KEY + '&q=' + termino + '&per_page=48&page=4';
     return this.http.get(URL);
   }
 }

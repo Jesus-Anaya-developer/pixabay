@@ -12,18 +12,24 @@ export class ListarImagenComponent {
   termino = '';
   suscription: Subscription;
   listImagenes: any[] = [];
+  loading = false;
 
   constructor(private _imagenService: ImagenService) {
 
     this.suscription = this._imagenService.getTerminoBusqueda().subscribe(data => {
       this.termino = data,
+        this.loading = true,
         this.obtenerImagenes()
     });
   }
 
   obtenerImagenes() {
     this._imagenService.getImagenes(this.termino).subscribe(data => {
-      console.log(data);
+
+      setTimeout(() => {
+        this.loading = false;
+      }, 3000);
+
       if (data.hits.length == 0) {
         this._imagenService.setError('Opss.. no encontramos ningun resultado');
         return
@@ -33,6 +39,7 @@ export class ListarImagenComponent {
 
     }, error => {
       this._imagenService.setError('Opss.. ocurrio un error');
+      this.loading = false;
     }
     )
   }
