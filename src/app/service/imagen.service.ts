@@ -28,10 +28,10 @@ export class ImagenService {
     return this.terminoBUsqueda$.asObservable();
   }
 
-  getImagenes(termino: string): Observable<any> {
+  getImagenes(termino: string, imagenesPorPagina: number, paginaActual: number): Observable<any> {
 
     const KEY = '37115025-765928e6b0eac7c350910363b';
-    const URL = 'https://pixabay.com/api/?key=' + KEY + '&q=' + termino + '&per_page=48&page=4';
+    const URL = 'https://pixabay.com/api/?key=' + KEY + '&q=' + termino + '&per_page=' + imagenesPorPagina + '&page=' + paginaActual;
     return this.http.get(URL);
   }
 }

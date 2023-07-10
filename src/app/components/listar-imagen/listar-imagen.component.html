@@ -27,14 +27,20 @@
 
 <div *ngIf="listImagenes.length > 0 && !loading" class="d-flex justify-content-center mt-2">
   <ul class="pagination pagination-lg">
-    <li class="page-item">
-      <a class="page-link" href="#">&laquo; Anterior</a>
+    <li *ngIf="paginaAnteriorClass()" class="page-item">
+      <a class="page-link" (click)="paginaAnterior()">&laquo; Anterior</a>
+    </li>
+    <li *ngIf="paginaActual > 1" class="page-item">
+      <a class="page-link" (click)="paginaAnterior()"> 1 </a>
     </li>
     <li class="page-item active">
-      <a class="page-link" href="#">1</a>
+      <a class="page-link" href="#"> {{paginaActual}} </a>
     </li>
-    <li class="page-item">
-      <a class="page-link" href="#">Siguiente &raquo;</a>
+    <li *ngIf="paginaActual < calcularTotalPaginas" class="page-item">
+      <a class="page-link" (click)="paginaSiguiente()"> {{calcularTotalPaginas}} </a>
+    </li>
+    <li *ngIf="paginaSiguienteClass()" class="page-item">
+      <a class="page-link" (click)="paginaSiguiente()">Siguiente &raquo;</a>
     </li>
   </ul>
 </div>
